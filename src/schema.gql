@@ -11,14 +11,35 @@ type Restaurant {
   categoryName: String!
 }
 
+type User {
+  email: String!
+  password: String!
+  role: UserRole!
+}
+
+enum UserRole {
+  Client
+  Owner
+  Delivery
+}
+
+type CreateUserOutput {
+  ok: Boolean!
+  error: String
+}
+
 type Query {
   restaurants: [Restaurant!]!
-  create: Boolean!
+  users: [User!]!
+  user(id: Int!): User!
 }
 
 type Mutation {
   createRestaurant(data: CreateRestaurantDto!): Restaurant!
   updateRestaurant(restaurantId: Float!, data: UpdateRestaurantDto!): Boolean!
+  createUser(createUserInput: CreateUserInput!): CreateUserOutput!
+  updateUser(updateUserInput: UpdateUserInput!): User!
+  removeUser(id: Int!): CreateUserOutput!
 }
 
 input CreateRestaurantDto {
@@ -35,4 +56,17 @@ input UpdateRestaurantDto {
   address: String
   ownerName: String
   categoryName: String
+}
+
+input CreateUserInput {
+  email: String!
+  password: String!
+  role: UserRole!
+}
+
+input UpdateUserInput {
+  email: String
+  password: String
+  role: UserRole
+  id: Int!
 }

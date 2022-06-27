@@ -7,8 +7,8 @@ import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core';
 import { join } from 'path';
 import { Restaurant } from './restaurants/entities/restaurant.entity';
 import { RestaurantsModule } from './restaurants/restaurants.module';
-import { UsersModule } from './users/users.module';
 import { CommonModule } from './common/common.module';
+import { UsersModule } from './users/users.module';
 import { User } from './users/entities/user.entity';
 
 @Module({
@@ -37,8 +37,8 @@ import { User } from './users/entities/user.entity';
       migrations: [],
     }),
     RestaurantsModule,
-    UsersModule,
     CommonModule,
+    UsersModule,
   ],
   controllers: [],
   providers: [],
